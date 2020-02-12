@@ -70,6 +70,17 @@ post '/games' do
     end
 end
 
+get '/games/saved' do
+  if logged_in? 
+    @user = current_user
+    @games = BoardGame.all 
+    # @games = BoardGame.all.select { |game| game.user_id == current_user.id } 
+    erb :'board_games/saved'
+  else
+    redirect to '/login'
+  end
+end
+
 delete '/games/:id' do 
     @game = game.find_by(id: params[:id])
     # binding.pry

@@ -10,6 +10,7 @@ class CreateBoardGames < ActiveRecord::Migration
       t.string :number_of_player
       t.string :setup_time
       t.string :array_num_player
+      t.integer :is_saved?
       # t.timestamps null: false
     end
   end

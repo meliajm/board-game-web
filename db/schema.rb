@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20200210175416) do
     t.string  "number_of_player"
     t.string  "setup_time"
     t.string  "array_num_player"
+    t.integer "is_saved?"
   end
 
   create_table "users", force: :cascade do |t|
