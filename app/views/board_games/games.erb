@@ -1,12 +1,9 @@
 <h2>Hello <%= "#{@user.username}" %></h2>
 
     <% @games.each_with_index do |game, index| %>
-    <p><%= "#{index+1}.  #{game.name}" %></p>
-    <p>Description: <%= "#{game.description}"%></p>
-    <p>Number of Players: <%= "#{game.number_of_player}"%></p>
-    
-    
-    <p><a href=<%="/games/#{game.id}/edit"%>>Edit this game</a></p>
+    <p><a href=<%="/games/#{game.id}"%>>View <%="#{game.name}"%></a></p>
+    <!--<p><%= "#{index+1}.  #{game.name}" %></p>-->
+    <!--<p><a href=<%="/games/#{game.id}"%>>View this game</a></p>-->
     <% end %>
         
 

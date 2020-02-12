@@ -49,7 +49,7 @@ end
 get '/games/:id' do 
     @game = BoardGame.find_by(id: params[:id])
     # binding.pry
-    if logged_in? && current_user.username == @game.user.username
+    if logged_in? #&& current_user.username == @game.user.username
         # binding.pry
         erb :'board_games/show'
     else

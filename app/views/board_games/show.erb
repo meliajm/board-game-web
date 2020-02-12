@@ -1,16 +1,10 @@
 <h2> <%= @game.name %></h2>
-<h4>Description:</h4>
-<h5> <%= @game.description %></h5>
-<h5>Number of players:</h5>
-<h5> <%= @game.number_of_player %></h5>
-<h5>Minimum age:</h5>
-<h5> <%= @game.minimum_age %></h5>
-<h5>Difficulty:</h5>
-<h5> <%= @game.difficulty %></h5>
-<h5>Game length:</h5>
-<h5> <%= @game.game_length %></h5>
-<h5>Setup time:</h5>
-<h5> <%= @game.setup_time %></h5>
+<h4>Description: <%= @game.description %></h4>
+<h5>Number of players: <%= @game.number_of_player %></h5>
+<h5>Minimum age: <%= @game.minimum_age %></h5>
+<h5>Difficulty: <%= @game.difficulty %></h5>
+<h5>Game length: <%= @game.game_length %></h5>
+<h5>Setup time: <%= @game.setup_time %></h5>
 
 <form action=<%="/games/#{@game.id}"%> method="POST">
     <input type="hidden" name="_method" value="DELETE">
