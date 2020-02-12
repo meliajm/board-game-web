@@ -21,11 +21,22 @@ get '/games/new' do
     end
 end
 
+get '/games/saved' do
+  if logged_in? 
+    @user = current_user
+    @games = BoardGame.all 
+    binding.pry
+    # @games = BoardGame.all.select { |game| game.user_id == current_user.id } 
+    erb :'board_games/saved'
+  else
+    redirect to '/login'
+  end
+end
+
 get '/games/:id/edit' do 
-    # binding.pry
     @game = BoardGame.find_by(id: params[:id])
-    
-    if logged_in? && current_user.username == @game.user.username 
+    # binding.pry
+    if logged_in? #&& current_user.username == @game.user.username 
         erb :'board_games/edit'
     else
         redirect to '/login'
@@ -35,8 +46,9 @@ end
 patch '/games/:id' do 
     # binding.pry
     @game = BoardGame.find_by(id: params[:id])
-    @game.update(content: params[:content])
-    if logged_in? && params[:content] != "" && current_user.username == @game.user.username 
+    @game.update(name: params[:name], minimum_age: params[:minimum_age], difficulty: params[:difficulty], description: params[:description],
+    game_length: params[:game_length], number_of_player: params[:number_of_player], setup_time: params[:setup_time])
+    if logged_in? && params[:content] != "" #&& current_user.username == @game.user.username 
         # erb :'games/show'
         redirect to "/games/#{@game.id}"
     elsif
@@ -70,22 +82,10 @@ post '/games' do
     end
 end
 
-get '/games/saved' do
-  if logged_in? 
-    @user = current_user
-    @games = BoardGame.all 
-    # @games = BoardGame.all.select { |game| game.user_id == current_user.id } 
-    erb :'board_games/saved'
-  else
-    redirect to '/login'
-  end
-end
-
 delete '/games/:id' do 
     @game = game.find_by(id: params[:id])
     # binding.pry
-    if logged_in? && current_user.username == @game.user.username
-       
+    if logged_in? #&& current_user.username == @game.user.username
         @game.delete
         redirect to '/games'
     end
