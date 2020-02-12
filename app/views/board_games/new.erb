@@ -1,0 +1,25 @@
+<% if logged_in? %>
+<h2>Hello, <%= @user.username %></h2>
+    <form action="/games" method="POST">
+    <label for="name">Name:   
+    <input type="text" name="name" id="name"><br>
+    <label for="description">Description:   
+    <input type="text" name="description" id="description"><br>
+    <label for="number_of_player">Number of players:   
+    <input type="text" name="number_of_player" id="number_of_player"><br>
+    <label for="minimum_age">Minimum age:   
+    <input type="text" name="minimum_age" id="minimum_age"><br>
+    <label for="difficulty">Difficulty:   
+    <input type="text" name="difficulty" id="difficulty"><br>
+    <label for="game_length">Game length:   
+    <input type="text" name="game_length" id="game_length"><br>
+    <label for="setup_time">Setup time:   
+    <input type="text" name="setup_time" id="setup_time"><br>
+    
+    
+    <input type="submit" name="Submit" id="submit">
+    </form>
+
+<% else %>
+<h2>Please log in to make your games!</h2>
+<% end %>

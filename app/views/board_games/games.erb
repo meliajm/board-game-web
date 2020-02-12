@@ -1,0 +1,18 @@
+<h2>Hello <%= "#{@user.username}" %></h2>
+
+    <% @games.each_with_index do |game, index| %>
+    <p><%= "#{index+1}.  #{game.name}" %></p>
+    <p>Description: <%= "#{game.description}"%></p>
+    <p>Number of Players: <%= "#{game.number_of_player}"%></p>
+    
+    
+    <p><a href=<%="/games/#{game.id}/edit"%>>Edit this game</a></p>
+    <% end %>
+        
+
+    <br>
+
+    <p><a href="/games/new">Make a new game</a></p>
+    <br>
+
+    <p><a href="/logout">Log Out</a></p>
