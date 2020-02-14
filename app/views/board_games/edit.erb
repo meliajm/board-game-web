@@ -1,23 +1,23 @@
 <h2>Edit: <%= @game.name %></h2>
-    <form action="/games<%=@game.id%>" method="POST">
+    <form action=<%="/games/#{@game.id}"%> method="POST">
     <input type="hidden" name="_method" value="PATCH">
     <label for="name">Edit the game's name:   
-    <input type="text" name="name" value="<%@game.name %>"><br>
+    <input type="text" name="game" value="<%= @game.name %>"><br>
     <label for="description">Edit the game's Description:   
-    <input type="text" name="description" value="<%@game.description %>"><br>
+    <input type="text" name="description" value="<%=@game.description %>"><br>
     <label for="number_of_player">Edit the game's number of players:   
-    <input type="text" name="number_of_player" value="<%@game.number_of_player %>"><br>
+    <input type="text" name="number_of_player" value="<%=@game.number_of_player %>"><br>
     <label for="minimum_age">Edit the game's minimum age:   
-    <input type="text" name="minimum_age" value="<%@game.minimum_age %>"><br>
+    <input type="text" name="minimum_age" value="<%=@game.minimum_age %>"><br>
     <label for="difficulty">Edit the game's difficulty:   
-    <input type="text" name="difficulty" value="<%@game.minimum_age %>"><br>
+    <input type="text" name="difficulty" value="<%=@game.minimum_age %>"><br>
     <label for="game_length">Edit the game's game length:   
-    <input type="text" name="game_length" value="<%@game.game_length %>"><br>
+    <input type="text" name="game_length" value="<%=@game.game_length %>"><br>
     <label for="setup_time">Edit the game's setup time:   
-    <input type="text" name="setup_time" value="<%@game.setup_time %>"><br>
+    <input type="text" name="setup_time" value="<%=@game.setup_time %>"><br>
     <label for="saved">Do you want to save this game?   
-    <input type="checkbox" name="is_saved?" value="<%@game.is_saved? %>"><br>
-    
+    <!--<input type="checkbox" name="is_saved?" value="<%=@game.is_saved? %>" <%='checked' if @game.user_id==@user.id %><br>
+    -->
     
     <input type="submit" value="Update">
     </form>

@@ -13,7 +13,8 @@ class BoardGamesController < ApplicationController
 end
 
 get '/games/new' do
-    if logged_in? && session[:user_id] == current_user.id 
+    # binding.pry
+    if logged_in? #&& session[:user_id] == current_user.id 
         @user = current_user
         erb :'board_games/new'
     else
@@ -25,7 +26,7 @@ get '/games/saved' do
   if logged_in? 
     @user = current_user
     @games = BoardGame.all 
-    binding.pry
+    # binding.pry
     # @games = BoardGame.all.select { |game| game.user_id == current_user.id } 
     erb :'board_games/saved'
   else
@@ -35,6 +36,7 @@ end
 
 get '/games/:id/edit' do 
     @game = BoardGame.find_by(id: params[:id])
+    @user = current_user
     # binding.pry
     if logged_in? #&& current_user.username == @game.user.username 
         erb :'board_games/edit'

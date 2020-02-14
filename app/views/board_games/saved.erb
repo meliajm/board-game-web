@@ -1,6 +1,6 @@
 <h2>Hello <%= "#{@user.username}" %></h2>
     
-    <% @qgames.each_with_index do |game, index| %>
+    <% @games.each_with_index do |game, index| %>
     <% if game.is_saved?%>
         <p><a href=<%="/games/#{game.id}"%>>View <%="#{game.name}"%></a></p>
     <!--<p><%= "#{index+1}.  #{game.name}" %></p>-->
