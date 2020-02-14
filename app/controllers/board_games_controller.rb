@@ -72,12 +72,13 @@ get '/games/:id' do
 end 
 
 post '/games' do 
-    # binding.pry
     if params[:content] == ""
         redirect to '/games/new'
     else
         @game = BoardGame.create(name: params[:name], minimum_age: params[:minimum_age], difficulty: params[:difficulty], description: params[:description],
-        game_length: params[:game_length], number_of_player: params[:number_of_player], setup_time: params[:setup_time])
+        game_length: params[:game_length], number_of_player: params[:number_of_player], setup_time: params[:setup_time], is_saved: params[:is_saved].to_i)
+        # binding.pry
+
         current_user.board_games << @game
         # @game.save
         redirect to "/games/#{@game.id}"
