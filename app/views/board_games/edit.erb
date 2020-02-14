@@ -2,7 +2,7 @@
     <form action=<%="/games/#{@game.id}"%> method="POST">
     <input type="hidden" name="_method" value="PATCH">
     <label for="name">Edit the game's name:   
-    <input type="text" name="game" value="<%= @game.name %>"><br>
+    <input type="text" name="name" value="<%= @game.name %>"><br>
     <label for="description">Edit the game's Description:   
     <input type="text" name="description" value="<%=@game.description %>"><br>
     <label for="number_of_player">Edit the game's number of players:   
@@ -15,8 +15,7 @@
     <input type="text" name="game_length" value="<%=@game.game_length %>"><br>
     <label for="setup_time">Edit the game's setup time:   
     <input type="text" name="setup_time" value="<%=@game.setup_time %>"><br>
-    <label for="is_saved">Do you want to save this game?   
-    <input type="checkbox" name="is_saved" value="<%=@game.is_saved %>" <%='checked' if @game.user_id==@user.id %><br>
+    
     <br>
     <input type="submit" value="Update">
     </form>

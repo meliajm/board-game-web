@@ -24,6 +24,8 @@
 #                     game_length: "10-20 minutes", number_of_player: "1-8", setup_time: "Under 2 minutes")
 
 User.create(username: "Captain", email: "captain@mycaptain.com", password: "c")
+User.create(username: "Kala", email: "kala@mycaptain.com", password: "k")
+
 
 BoardGame.create(name: 'Pandemic', minimum_age: '10+', difficulty: 'Difficulty: Hard', description: 'The best overall board game', game_length: '30-60 minutes', number_of_player: ' 2-4', setup_time: '5 minutes')
 BoardGame.create(name: 'Ticket to Ride', minimum_age: '8+', difficulty: 'Difficulty: Easy', description: 'The best all-ages board game', game_length: '60 mins', number_of_player: ' 2-5', setup_time: '5 mins')
