@@ -1,5 +1,5 @@
 <h2>Edit: <%= @game.name %></h2>
-    <form action=<%="/games/#{@game.id}"%> method="POST">
+    <form action=<%="/games/#{@game.slug}"%> method="POST">
     <input type="hidden" name="_method" value="PATCH">
     <label for="name">Edit the game's name:   
     <input type="text" name="name" value="<%= @game.name %>"><br>

@@ -52,15 +52,17 @@ end
         game_length: params[:game_length], number_of_player: params[:number_of_player], setup_time: params[:setup_time])
         if logged_in? && params[:content] != "" #&& current_user.username == @game.user.username 
             # erb :'games/show'
-            redirect to "/games/#{@game.id}"
+            redirect to "/games/#{@game.slug}"
         elsif
-            redirect to "/games/#{@game.id}/edit"
+            redirect to "/games/#{@game.slug}/edit"
         else
             redirect to '/login'
         end
     end
 
     get '/games/:slug' do 
+        # binding.pry
+        @user = current_user
         @game = BoardGame.find_by_slug(params[:slug])
         # binding.pry
         if logged_in? #&& current_user.username == @game.user.username
@@ -81,11 +83,12 @@ end
 
             # current_user.board_games << @game
             # @game.save
-            redirect to "/games/#{@game.id}"
+            redirect to "/games/#{@game.slug}"
         end
     end
 
     delete '/games/:slug' do 
+        @user = current_user
         @game = BoardGame.find_by_slug([:slug])
         # binding.pry
         if logged_in? #&& current_user.username == @game.user.username

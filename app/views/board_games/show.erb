@@ -7,11 +7,11 @@
 <h5>Game length: <%= @game.game_length %></h5>
 <h5>Setup time: <%= @game.setup_time %></h5>
 <br>
-<form action=<%="/games/#{@game.id}"%> method="POST">
+<form action=<%="/games/#{@game.slug}"%> method="POST">
     <input type="hidden" name="_method" value="DELETE">
     <input type="submit" value="Delete game" id="Delete game">
 </form>
 <br>
-    <p><a href=<%="/games/#{@game.id}/edit"%>>Edit this game</a></p>
+    <p><a href=<%="/games/#{@game.slug}/edit"%>>Edit this game</a></p>
     <p><a href=<%="/games"%>>See all games</a></p>
 
