@@ -44,6 +44,9 @@
 9. [] populate form with logic to show saved? games???
 10. [] use associations  
 users can view all board games in db
+11. [x] can delete user account
+12. [x] can use slugs for board games to navigate 
+13. [x] fix delete route for games
 
 
 

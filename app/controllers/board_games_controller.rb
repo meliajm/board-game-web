@@ -89,7 +89,7 @@ end
 
     delete '/games/:slug' do 
         @user = current_user
-        @game = BoardGame.find_by_slug([:slug])
+        @game = BoardGame.find_by_slug(params[:slug])
         # binding.pry
         if logged_in? #&& current_user.username == @game.user.username
             @game.delete
