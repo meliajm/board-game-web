@@ -54,4 +54,29 @@ class UsersController < ApplicationController
           redirect to '/'
       end
   end
+
+    # get '/games/:slug' do 
+    #     @user = User.find_by_slug(params[:slug])
+    #     # binding.pry
+    #     erb :'users/show'
+    # end
+
+    delete '/users/:slug' do 
+        @user = User.find_by_slug(params[:slug])
+        # binding.pry
+        # so saved needs to be added to schema? or no?
+        if logged_in? #&& current_user.username == @user.owner.username
+            session.clear
+            @user.delete
+            redirect to '/games'
+        end
+
+    end
+
+
+
+
+
+
+
 end
