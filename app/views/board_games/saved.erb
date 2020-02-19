@@ -2,9 +2,7 @@
     
     <% @games.each_with_index do |game, index| %>
         <p><a href=<%="/games/#{game.slug}"%>>View <%="#{game.name}"%></a></p>
-    <!--<p><%= "#{index+1}.  #{game.name}" %></p>-->
-    <!--<p><a href=<%="/games/#{game.id}"%>>View this game</a></p>-->
-        <!--<% end %>-->
+   
     <% end %>
         
 
@@ -12,6 +10,7 @@
 
     <h4><a href="/games/new">Make a new game</a></h4>
     <br>
+    <p><a href=<%="/games"%>>See all games</a></p>
     
 
     <h5><a href="/logout">Log Out</a></h5>

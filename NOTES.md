@@ -51,7 +51,9 @@ users can view all board games in db
 
 
 
-
+ <!--<p><%= "#{index+1}.  #{game.name}" %></p>-->
+<!--<p><a href=<%="/games/#{game.id}"%>>View this game</a></p>-->
+<!--<% end %>-->
 
 how to put scraped data into app? - seed data?
 

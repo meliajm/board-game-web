@@ -1,0 +1,15 @@
+<h2>Search page</h2>
+
+<p>Search by difficulty</p>
+
+
+<% if logged_in? %>
+<h2>Hello, <%= @user.username %></h2>
+    <form action="/games/search" method="POST">
+    <label for="difficulty">Difficuly (easy, moderate, hard):   
+    <input type="text" name="difficulty_input" id="difficulty"><br>
+    <input type="submit" name="Submit" id="submit">
+    </form>
+    <br>
+
+<% end %>

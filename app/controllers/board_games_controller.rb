@@ -34,6 +34,19 @@ end
         end
     end
 
+    get '/games/search' do 
+        # binding.pry
+        @user = current_user
+        if logged_in? #&& current_user.username == @game.user.username
+            # binding.pry
+            erb :'board_games/search'
+        else
+            redirect to '/login'
+        end
+    end 
+
+    
+
     get '/games/:slug/edit' do 
         @game = BoardGame.find_by_slug(params[:slug])
         @user = current_user
@@ -71,7 +84,23 @@ end
         else
             redirect to '/login'
         end
-    end 
+    end
+
+  
+    
+    post '/games/search' do 
+        difficulty_input = params[:difficulty_input]
+        @user = current_user
+        @games = BoardGame.all 
+        @games_difficulty = []
+        @games.each do |g|
+            if g.difficulty.include?(difficulty_input.capitalize)
+                @games_difficulty << g
+            end
+        @games_difficulty
+        end
+        erb :'board_games/difficulty'
+    end
 
     post '/games' do 
         if params[:name] == ""
@@ -86,6 +115,8 @@ end
             redirect to "/games/#{@game.slug}"
         end
     end
+
+    
 
     delete '/games/:slug' do 
         @user = current_user

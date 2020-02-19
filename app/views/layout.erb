@@ -18,12 +18,15 @@
     <h1>Welcome to your board games</h1>
 
         <%= yield %>
-      <footer>
+      <br>
       <% if logged_in? %>
+      <p><a href=<%="/games"%>>See all games</a></p>
+      <footer>
         <form action=<%="/users/#{@user.slug}"%> method="POST">
           <input type="hidden" name="_method" value="DELETE">
           <input type="submit" value="Delete Account" id="Delete account">
         </form>
+        
         <% end %>
       </footer>
       <footer class="branding">

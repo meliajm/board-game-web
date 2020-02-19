@@ -1,0 +1,5 @@
+<h2>difficulty</h2>
+
+<p><% @games_difficulty.each do |game| %></p>
+    <p><a href=<%="/games/#{game.slug}"%>>View <%="#{game.name}"%></a></p>
+<p><% end %></p>
