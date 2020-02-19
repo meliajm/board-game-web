@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(version: 20200214034339) do
 
   create_table "board_games", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "owner_id"
     t.string  "name"
     t.integer "minimum_age"
     t.string  "difficulty"

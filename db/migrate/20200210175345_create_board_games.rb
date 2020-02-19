@@ -1,7 +1,7 @@
 class CreateBoardGames < ActiveRecord::Migration
   def change
     create_table :board_games do |t|
-      t.integer :user_id
+      t.integer :owner_id
       t.string :name
       t.integer :minimum_age
       t.string :difficulty
