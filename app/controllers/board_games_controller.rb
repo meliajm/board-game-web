@@ -10,7 +10,7 @@ class BoardGamesController < ApplicationController
     else
         redirect to '/login'
     end
-end
+  end
 
     get '/games/new' do
         # binding.pry
@@ -85,20 +85,11 @@ end
             redirect to '/login'
         end
     end
-
-  
     
     post '/games/search' do 
-        difficulty_input = params[:difficulty_input]
         @user = current_user
-        @games = BoardGame.all 
-        @games_difficulty = []
-        @games.each do |g|
-            if g.difficulty.include?(difficulty_input.capitalize)
-                @games_difficulty << g
-            end
-        @games_difficulty
-        end
+        @difficulty = params[:difficulty_input]
+        @games_difficulty = BoardGame.search_by_difficulty(params[:difficulty_input])
         erb :'board_games/difficulty'
     end
 

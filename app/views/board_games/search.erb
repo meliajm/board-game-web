@@ -1,8 +1,6 @@
 <h2>Search page</h2>
 
 <p>Search by difficulty</p>
-
-
 <% if logged_in? %>
 <h2>Hello, <%= @user.username %></h2>
     <form action="/games/search" method="POST">
@@ -11,5 +9,4 @@
     <input type="submit" name="Submit" id="submit">
     </form>
     <br>
-
 <% end %>
