@@ -60,7 +60,7 @@ class BoardGamesController < ApplicationController
     end
 
     patch '/games/:slug' do 
-        binding.pry
+        # binding.pry
         @game = BoardGame.find_by_slug(params[:slug])
         @game.update(name: params[:name], minimum_age: params[:minimum_age], difficulty: params[:difficulty], description: params[:description],
         game_length: params[:game_length], number_of_player: params[:number_of_player], setup_time: params[:setup_time], owner_id: params[:owner])
@@ -95,11 +95,12 @@ class BoardGamesController < ApplicationController
     end
 
     post '/games' do 
+        @user = current_user
         if params[:name] == ""
             redirect to '/games/new'
         else
             @game = BoardGame.create(name: params[:name], minimum_age: params[:minimum_age], difficulty: params[:difficulty], description: params[:description],
-            game_length: params[:game_length], number_of_player: params[:number_of_player], setup_time: params[:setup_time])
+            game_length: params[:game_length], number_of_player: params[:number_of_player], setup_time: params[:setup_time], owner_id: @user.id)
             # binding.pry
 
             # current_user.board_games << @game
@@ -107,8 +108,6 @@ class BoardGamesController < ApplicationController
             redirect to "/games/#{@game.slug}"
         end
     end
-
-    
 
     delete '/games/:slug' do 
         @user = current_user

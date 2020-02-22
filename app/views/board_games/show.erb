@@ -6,7 +6,7 @@
 <h5>Difficulty: <%= @game.difficulty %></h5>
 <h5>Game length: <%= @game.game_length %></h5>
 <h5>Setup time: <%= @game.setup_time %></h5>
-<h5>Game saved to your games? <%= !!@game.owner %></h5>
+<h5>Game saved to your games? <%= @game.owner.id==@user.id if @game.owner%></h5>
 <br>
 <form action=<%="/games/#{@game.slug}"%> method="POST">
     <input type="hidden" name="_method" value="DELETE">

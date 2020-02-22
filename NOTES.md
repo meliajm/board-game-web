@@ -41,8 +41,8 @@
         array_games
     end
 
-9. [] populate form with logic to show saved? games???
-10. [] use associations  
+9. [x] populate form with logic to show saved? games???
+10. [x] use associations  
 users can view all board games in db
 11. [x] can delete user account
 12. [x] can use slugs for board games to navigate 
