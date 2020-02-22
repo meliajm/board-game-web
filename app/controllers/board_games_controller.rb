@@ -25,7 +25,8 @@ class BoardGamesController < ApplicationController
     get '/games/saved' do
         if logged_in? 
             @user = current_user
-            @games = BoardGame.all 
+            # need to work on association more
+            @games = @user.owned_games
             # binding.pry
             # @games = BoardGame.all.select { |game| game.user_id == current_user.id } 
             erb :'board_games/saved'

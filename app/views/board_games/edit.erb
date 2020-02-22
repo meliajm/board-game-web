@@ -15,7 +15,9 @@
     <input type="text" name="game_length" value="<%=@game.game_length %>"><br>
     <label for="setup_time">Edit the game's setup time:   
     <input type="text" name="setup_time" value="<%=@game.setup_time %>"><br>
-    
+    <label for="owner">Do you want to save this game to your saved games?   
+    <input type="checkbox" name="owner" value="<%= @user.id %>" <%='checked' if @game.owner==@user %>></input><br>
+
     <br>
     <input type="submit" value="Update">
     </form>

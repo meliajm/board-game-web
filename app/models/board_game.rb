@@ -1,9 +1,10 @@
 class BoardGame < ActiveRecord::Base
     # ??? 
-    belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
     has_many :user_games
     has_many :users, through: :user_games
 
+    belongs_to :owner, class_name: 'User', foreign_key: :owner_id
+    
     def slug
         self.name.downcase.gsub(/\s+/, '-')
     end
