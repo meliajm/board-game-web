@@ -52,7 +52,7 @@ class BoardGamesController < ApplicationController
         @game = BoardGame.find_by_slug(params[:slug])
         @user = current_user
         # binding.pry
-        if logged_in? #&& current_user.username == @game.user.username 
+        if logged_in? #&& current_user.username == @game.owner.username 
             erb :'board_games/edit'
         else
             redirect to '/login'
@@ -60,11 +60,11 @@ class BoardGamesController < ApplicationController
     end
 
     patch '/games/:slug' do 
-        # binding.pry
+        binding.pry
         @game = BoardGame.find_by_slug(params[:slug])
         @game.update(name: params[:name], minimum_age: params[:minimum_age], difficulty: params[:difficulty], description: params[:description],
-        game_length: params[:game_length], number_of_player: params[:number_of_player], setup_time: params[:setup_time])
-        if logged_in? && params[:content] != "" #&& current_user.username == @game.user.username 
+        game_length: params[:game_length], number_of_player: params[:number_of_player], setup_time: params[:setup_time], owner_id: params[:owner])
+        if logged_in? #&& current_user.username == @game.owner.username
             # erb :'games/show'
             redirect to "/games/#{@game.slug}"
         elsif
@@ -114,9 +114,12 @@ class BoardGamesController < ApplicationController
         @user = current_user
         @game = BoardGame.find_by_slug(params[:slug])
         # binding.pry
-        if logged_in? #&& current_user.username == @game.user.username
+        if logged_in? && current_user.username == @game.owner.username
             @game.delete
             redirect to '/games'
         end
     end
+
+    # make helper methods
+
 end

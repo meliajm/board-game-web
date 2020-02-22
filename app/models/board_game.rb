@@ -4,7 +4,11 @@ class BoardGame < ActiveRecord::Base
     has_many :users, through: :user_games
 
     belongs_to :owner, class_name: 'User', foreign_key: :owner_id
-    
+    # validates :name, presence: true
+    # validates :minimum_age, presence: true
+    validates_presence_of :name, :minimum_age, :difficulty, :description, :game_length, :number_of_player, :setup_time
+    validates_uniqueness_of :name 
+
     def slug
         self.name.downcase.gsub(/\s+/, '-')
     end
